@@ -136,3 +136,7 @@ def get_loader(
         drop_last=False)
 
     return data_loader
+
+
+if __name__ == '__main__':
+    main()
