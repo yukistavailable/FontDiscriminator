@@ -29,7 +29,7 @@ def main():
                         help='Using GPU or not')
     parser.add_argument('--save_dir', default='checkpoints',
                         help='The size of data pair for discriminator')
-    parser.add_argument('--input_ch', default=1,
+    parser.add_argument('--input_ch', default=2,
                         help='The number of channels of input image')
     parser.add_argument('--img_size', default=80,
                         help='The size of input image')
