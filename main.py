@@ -31,6 +31,8 @@ def main():
                         help='The size of data pair for discriminator')
     parser.add_argument('--input_ch', default=1,
                         help='The number of channels of input image')
+    parser.add_argument('--img_size', default=80,
+                        help='The size of input image')
     parser.add_argument('--pair_size', default=2,
                         help='The size of data pair for discriminator')
     parser.add_argument(
@@ -63,6 +65,7 @@ def train(args):
         args.device = 'cuda'
     else:
         args.device = 'cpu'
+    args.shuffle = True
 
     networks, opts = build_model(args)
 
