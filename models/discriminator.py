@@ -13,9 +13,10 @@ class Discriminator(nn.Module):
     def __init__(
             self,
             image_size=256,
-            num_domains=2,
+            num_domains=1,
             max_conv_dim=1024,
-            input_ch=3, last_kernel=True):
+            input_ch=2,
+            last_kernel=True):
         super(Discriminator, self).__init__()
         """
         num_domains: number of fonts
@@ -43,6 +44,7 @@ class Discriminator(nn.Module):
         blocks += [nn.LeakyReLU(0.2)]
         blocks += [nn.Conv2d(dim_out, num_domains, 1, 1, 0)]
         self.main = nn.Sequential(*blocks)
+        self.sigmoid = nn.Sigmoid()
 
         self.apply(weights_init('kaiming'))
 
@@ -59,6 +61,7 @@ class Discriminator(nn.Module):
 
         # (batch, num_domains)
         out = out.view(out.size(0), -1)
+        out = self.sigmoid(out)
 
         return out
 
