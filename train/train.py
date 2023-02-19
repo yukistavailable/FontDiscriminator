@@ -57,7 +57,7 @@ def train_style_discriminator(
         total_img = total_img.to(args.device)
         total_font_idx = total_font_idx.to(args.device)
         out = D(total_img)
-        loss = calc_loss(out, total_font_idx)
+        loss = calc_loss(out, total_font_idx, args)
 
         d_opt.zero_grad()
         loss.backward()
